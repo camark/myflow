@@ -696,10 +696,14 @@
                 + Math.round(_rect.attr('y')) + ", width:"
                 + Math.round(_rect.attr('width')) + ", height:"
                 + Math.round(_rect.attr('height')) + "},";
-            //for (var k in _o.props) {
-            //    data += k + ":{value:'"
-            //        + _o.props[k].value + "'},";
-            //}
+                data += "props:{";
+                for (var k in _o.props) {
+                     data += k + ":{value:'"
+                         + _o.props[k].value + "'},";
+                }
+                if (data.substring(data.length - 1, data.length) == ',')
+                     data = data.substring(0, data.length - 1);
+                data += "}";
             if (data.substring(data.length - 1, data.length) == ',')
                 data = data.substring(0, data.length - 1);
             data += "}";
@@ -713,9 +717,9 @@
 
             _o = $.extend(true, _o, data);
 
-            _text.attr({
-                text: obj.text.text
-            });
+            //_text.attr({
+                //text: obj.text.text
+            //});
             resize();
         };
 
